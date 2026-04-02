@@ -1,6 +1,6 @@
 //
 //  Constants.h
-//  background_locator_2
+//  background_locator_neo
 //
 //  Created by Mehdi Sohrabi on 6/3/20.
 //
@@ -61,3 +61,4 @@ FOUNDATION_EXPORT NSString *const kPrefStopWithTerminate;
 @end
 
 NS_ASSUME_NONNULL_END
+

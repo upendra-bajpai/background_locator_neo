@@ -1,4 +1,4 @@
-import 'package:background_locator_2/keys.dart';
+import 'package:background_locator_neo/keys.dart';
 
 import 'locator_settings.dart';
 
@@ -31,3 +31,4 @@ class IOSSettings extends LocatorSettings {
     };
   }
 }
+

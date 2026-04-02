@@ -1,4 +1,4 @@
-package yukams.app.background_locator_2
+package upendra.bajpai.background_locator_neo
 
 import android.content.BroadcastReceiver
 import android.content.Context

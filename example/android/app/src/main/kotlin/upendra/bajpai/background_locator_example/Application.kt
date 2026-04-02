@@ -1,11 +1,11 @@
-package yukams.app.background_locator_example
+package upendra.bajpai.background_locator_example
 
 import io.flutter.app.FlutterApplication
 import io.flutter.plugin.common.PluginRegistry
 import io.flutter.plugin.common.PluginRegistry.PluginRegistrantCallback
 import io.flutter.plugins.pathprovider.PathProviderPlugin
 import io.flutter.view.FlutterMain
-import yukams.app.background_locator_2.IsolateHolderService
+import upendra.bajpai.background_locator_neo.IsolateHolderService
 
 //class Application : FlutterApplication(), PluginRegistrantCallback {
 //    override fun onCreate() {
@@ -20,3 +20,4 @@ import yukams.app.background_locator_2.IsolateHolderService
 //        }
 //    }
 //}
+

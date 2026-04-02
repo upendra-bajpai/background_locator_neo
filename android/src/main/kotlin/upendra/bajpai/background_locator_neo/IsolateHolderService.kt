@@ -1,4 +1,4 @@
-package yukams.app.background_locator_2
+package upendra.bajpai.background_locator_neo
 
 import android.app.*
 import android.Manifest
@@ -16,10 +16,10 @@ import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.BinaryMessenger
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
-import yukams.app.background_locator_2.pluggables.DisposePluggable
-import yukams.app.background_locator_2.pluggables.InitPluggable
-import yukams.app.background_locator_2.pluggables.Pluggable
-import yukams.app.background_locator_2.provider.*
+import upendra.bajpai.background_locator_neo.pluggables.DisposePluggable
+import upendra.bajpai.background_locator_neo.pluggables.InitPluggable
+import upendra.bajpai.background_locator_neo.pluggables.Pluggable
+import upendra.bajpai.background_locator_neo.provider.*
 import java.util.HashMap
 import androidx.core.app.ActivityCompat
 
@@ -349,3 +349,4 @@ class IsolateHolderService : MethodChannel.MethodCallHandler, LocationUpdateList
         }
     }
 }
+

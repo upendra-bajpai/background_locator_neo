@@ -1,9 +1,9 @@
-name: background_locator_2_example
-description: Demonstrates how to use the background_locator_2 plugin.
+name: background_locator_neo_example
+description: Demonstrates how to use the background_locator_neo plugin.
 publish_to: 'none'
 
 environment:
-  sdk: ">=2.8.0 <3.0.0"
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   flutter:
@@ -17,7 +17,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  background_locator_2:
+  background_locator_neo:
     path: ../
 
   path_provider: ^2.0.8
@@ -64,3 +64,4 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+

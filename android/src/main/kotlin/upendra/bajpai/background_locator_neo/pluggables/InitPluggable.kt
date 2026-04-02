@@ -1,11 +1,11 @@
-package yukams.app.background_locator_2.pluggables
+package upendra.bajpai.background_locator_neo.pluggables
 
 import android.content.Context
 import android.os.Handler
 import io.flutter.plugin.common.MethodChannel
-import yukams.app.background_locator_2.IsolateHolderService
-import yukams.app.background_locator_2.Keys
-import yukams.app.background_locator_2.PreferencesManager
+import upendra.bajpai.background_locator_neo.IsolateHolderService
+import upendra.bajpai.background_locator_neo.Keys
+import upendra.bajpai.background_locator_neo.PreferencesManager
 
 class InitPluggable : Pluggable {
     private var isInitCallbackCalled = false

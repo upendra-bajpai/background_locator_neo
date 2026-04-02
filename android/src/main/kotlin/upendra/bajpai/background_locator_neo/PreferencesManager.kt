@@ -1,13 +1,13 @@
-package yukams.app.background_locator_2
+package upendra.bajpai.background_locator_neo
 
 import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import yukams.app.background_locator_2.provider.LocationClient
+import upendra.bajpai.background_locator_neo.provider.LocationClient
 
 class PreferencesManager {
     companion object {
-        private const val PREF_NAME = "background_locator_2"
+        private const val PREF_NAME = "background_locator_neo"
 
         @JvmStatic
         fun saveCallbackDispatcher(context: Context, map: Map<Any, Any>) {

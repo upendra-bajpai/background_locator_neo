@@ -1,4 +1,4 @@
-import background_locator_2
+import background_locator_neo
 import Flutter
 import path_provider_ios
 import UIKit
@@ -31,3 +31,4 @@ func registerPlugins(registry: FlutterPluginRegistry) {
         }
     }
 }
+

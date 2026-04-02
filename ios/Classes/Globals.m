@@ -1,6 +1,6 @@
 //
 //  Constants.m
-//  background_locator_2
+//  background_locator_neo
 //
 //  Created by Mehdi Sohrabi on 6/3/20.
 //
@@ -57,3 +57,4 @@ NSString *const kPrefStopWithTerminate = @"pref_isStopWithTerminate";
 
 
 @end
+
