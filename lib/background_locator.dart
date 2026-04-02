@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'dart:ui';
 
-import 'package:background_locator_2/settings/android_settings.dart';
-import 'package:background_locator_2/settings/ios_settings.dart';
-import 'package:background_locator_2/utils/settings_util.dart';
+import 'package:background_locator_neo/settings/android_settings.dart';
+import 'package:background_locator_neo/settings/ios_settings.dart';
+import 'package:background_locator_neo/utils/settings_util.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
@@ -81,3 +81,4 @@ class BackgroundLocator {
     await _channel.invokeMethod(Keys.METHOD_PLUGIN_UPDATE_NOTIFICATION, arg);
   }
 }
+

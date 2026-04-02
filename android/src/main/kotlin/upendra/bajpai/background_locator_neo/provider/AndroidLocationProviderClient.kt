@@ -1,4 +1,4 @@
-package yukams.app.background_locator_2.provider
+package upendra.bajpai.background_locator_neo.provider
 
 import android.annotation.SuppressLint
 import android.content.Context

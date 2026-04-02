@@ -1,3 +1,11 @@
+## 1.0.0
+* **Initial Release of background_locator_neo**: Forked and refactored from `background_locator_fixed`.
+* **Namespace Refactor**: Updated Android package name to `upendra.bajpai.background_locator_neo`.
+* **Modern Android Support**: Set `compileSdkVersion` to 34 and added required `namespace` to `build.gradle` for AGP 8.0 support.
+* **Kotlin Compatibility**: Fixed type mismatch errors in `LocationParserUtil.kt` encountered with modern Kotlin compilers.
+* **Dart 3 Support**: Updated SDK constraints to support Dart 3.x.
+* **JVM Target**: Forced JVM target to 1.8 for Java/Kotlin consistency.
+
 ## 2.0.6
 * Fixing iOS build
 * Fixing memory leak on Android
@@ -23,10 +31,10 @@
 
 ## 2.0.4-dev.1
 * Fixing iOS build
-* Replacing package:background_locator_2 by background_locator_2
+* Replacing package:background_locator_neo by background_locator_neo
 
 ## 2.0.3
-* Replacing background_locator by background_locator_2 **(BREAKING CHANGE)**
+* Replacing background_locator by background_locator_neo **(BREAKING CHANGE)**
 * Replacing rekab by yukams
 
 ## 2.0.2
@@ -139,7 +147,7 @@
 * Fix accessing other plugins when app is terminated.
 
 ## 1.1.1+1
-* ‌Fix Callback is not triggered in iOS.
+* â€ŒFix Callback is not triggered in iOS.
 
 ## 1.1.0+1
 * Add callback for android notification.
@@ -169,3 +177,4 @@ Change where location access requested.
 ## 0.0.1-beta
 
 * initial release.
+
