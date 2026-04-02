@@ -1,6 +1,6 @@
 name: background_locator_neo
 description: A Flutter plugin to request the location even if the app is killed. Sending the location to a dart function in background, also provide a meter filter
-version: 3.0.0
+version: 1.0.0
 homepage: https://github.com/upendra-bajpai/background_locator_neo
 issue_tracker: https://github.com/upendra-bajpai/background_locator_neo/issues
 platforms:

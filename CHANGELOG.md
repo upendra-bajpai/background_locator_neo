@@ -1,6 +1,6 @@
-## 3.0.0
-* **Major Breaking Change**: Renamed plugin from `background_locator_2` to `background_locator_neo`.
-* **Namespace Change**: Updated Android package name to `upendra.bajpai.background_locator_neo`.
+## 1.0.0
+* **Initial Release of background_locator_neo**: Forked and refactored from `background_locator_fixed`.
+* **Namespace Refactor**: Updated Android package name to `upendra.bajpai.background_locator_neo`.
 * **Modern Android Support**: Set `compileSdkVersion` to 34 and added required `namespace` to `build.gradle` for AGP 8.0 support.
 * **Kotlin Compatibility**: Fixed type mismatch errors in `LocationParserUtil.kt` encountered with modern Kotlin compilers.
 * **Dart 3 Support**: Updated SDK constraints to support Dart 3.x.
