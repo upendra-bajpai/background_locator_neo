@@ -3,10 +3,10 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'background_locator_neo'
-  s.version          = '2.0.6'
-  s.summary          = 'A Flutter plugin for getting location updates even when the app is killed.'
+  s.version          = '1.0.0'
+  s.summary          = 'A modern Flutter plugin for background location updates (Neo fork).'
   s.description      = <<-DESC
-A new Flutter plugin.
+A modernized fork of background_locator_fixed, updated for Flutter 3+ and Android 14.
                        DESC
   s.homepage         = 'https://github.com/upendra-bajpai/background_locator_neo'
   s.license          = { :file => '../LICENSE' }
@@ -16,6 +16,6 @@ A new Flutter plugin.
   s.public_header_files = 'Classes/**/*.h'
   s.dependency 'Flutter'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '11.0'
 end
 
