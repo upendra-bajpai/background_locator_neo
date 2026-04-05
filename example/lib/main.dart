@@ -8,7 +8,7 @@ import 'package:background_locator_neo/settings/android_settings.dart';
 import 'package:background_locator_neo/settings/ios_settings.dart';
 import 'package:background_locator_neo/settings/locator_settings.dart';
 import 'package:flutter/material.dart';
-import 'package:location_permissions/location_permissions.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 import 'file_manager.dart';
 import 'location_callback_handler.dart';
@@ -180,26 +180,25 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<bool> _checkLocationPermission() async {
-    final access = await LocationPermissions().checkPermissionStatus();
-    switch (access) {
-      case PermissionStatus.unknown:
+    final status = await Permission.locationAlways.status;
+    switch (status) {
       case PermissionStatus.denied:
-      case PermissionStatus.restricted:
-        final permission = await LocationPermissions().requestPermissions(
-          permissionLevel: LocationPermissionLevel.locationAlways,
-        );
-        if (permission == PermissionStatus.granted) {
+      case PermissionStatus.provisional:
+        final result = await Permission.locationAlways.request();
+        if (result == PermissionStatus.granted) {
           return true;
         } else {
           return false;
         }
-        break;
+      case PermissionStatus.restricted:
+      case PermissionStatus.permanentlyDenied:
+        return false;
       case PermissionStatus.granted:
         return true;
-        break;
+      case PermissionStatus.limited:
+        return true;
       default:
         return false;
-        break;
     }
   }
 
