@@ -192,9 +192,13 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     double distanceFilter= [[settings objectForKey:kSettingsDistanceFilter] doubleValue];
     bool  showsBackgroundLocationIndicator=[[settings objectForKey:kSettingsShowsBackgroundLocationIndicator] boolValue];
     bool  stopWithTerminate=[[settings objectForKey:kSettingsStopWithTerminate] boolValue];
+    bool  pausesLocationUpdatesAutomatically = [[settings objectForKey:kSettingsPausesLocationUpdatesAutomatically] boolValue];
+    CLActivityType activityType = (CLActivityType)[[settings objectForKey:kSettingsActivityType] intValue];
 
     _locationManager.desiredAccuracy = accuracy;
     _locationManager.distanceFilter = distanceFilter;
+    _locationManager.pausesLocationUpdatesAutomatically = pausesLocationUpdatesAutomatically;
+    _locationManager.activityType = activityType;
     
     if (@available(iOS 11.0, *)) {
       _locationManager.showsBackgroundLocationIndicator = showsBackgroundLocationIndicator;

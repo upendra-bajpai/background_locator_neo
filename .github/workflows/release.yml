@@ -1,0 +1,43 @@
+name: Background Locator Neo Release
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.38.5'
+          channel: 'stable'
+          cache: true
+
+      - name: Install dependencies (Project)
+        run: flutter pub get
+
+      - name: Install dependencies (Example)
+        run: |
+          cd example
+          flutter pub get
+
+      - name: Analyze project
+        run: flutter analyze
+
+      - name: Build Android APK
+        run: |
+          cd example
+          flutter build apk --debug
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: release-apk
+          path: example/build/app/outputs/flutter-apk/app-debug.apk

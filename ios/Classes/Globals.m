@@ -46,6 +46,8 @@ NSString *const kSettingsAccuracy = @"settings_accuracy";
 NSString *const kSettingsDistanceFilter = @"settings_distanceFilter";
 NSString *const kSettingsShowsBackgroundLocationIndicator = @"settings_ios_showsBackgroundLocationIndicator";
 NSString *const kSettingsStopWithTerminate = @"settings_ios_stopWithTerminate";
+NSString *const kSettingsPausesLocationUpdatesAutomatically = @"settings_ios_pausesLocationUpdatesAutomatically";
+NSString *const kSettingsActivityType = @"settings_ios_activityType";
 
 NSString *const kBCMSendLocation = @"BCM_SEND_LOCATION";
 NSString *const kBCMInit = @"BCM_INIT";

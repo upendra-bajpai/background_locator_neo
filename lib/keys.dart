@@ -61,6 +61,9 @@ class Keys {
       'settings_ios_showsBackgroundLocationIndicator';
   static const String SETTINGS_IOS_STOP_WITH_TERMINATE =
       'settings_ios_stopWithTerminate';
+  static const String SETTINGS_IOS_PAUSES_LOCATION_UPDATES_AUTOMATICALLY =
+      'settings_ios_pausesLocationUpdatesAutomatically';
+  static const String SETTINGS_IOS_ACTIVITY_TYPE = 'settings_ios_activityType';
 
   static const String BCM_SEND_LOCATION = 'BCM_SEND_LOCATION';
   static const String BCM_NOTIFICATION_CLICK = 'BCM_NOTIFICATION_CLICK';

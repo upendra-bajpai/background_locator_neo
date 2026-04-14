@@ -163,6 +163,9 @@ class _HelloWorldScreenState extends State<HelloWorldScreen> {
         accuracy: LocationAccuracy.NAVIGATION,
         distanceFilter: 0,
         showsBackgroundLocationIndicator: true,
+        stopWithTerminate: true,
+        pausesLocationUpdatesAutomatically: false,
+        activityType: LocationActivityType.other,
       ),
       androidSettings: AndroidSettings(
         accuracy: LocationAccuracy.NAVIGATION,

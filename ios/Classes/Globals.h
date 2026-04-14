@@ -49,6 +49,8 @@ FOUNDATION_EXPORT NSString *const kSettingsAccuracy;
 FOUNDATION_EXPORT NSString *const kSettingsDistanceFilter;
 FOUNDATION_EXPORT NSString *const kSettingsShowsBackgroundLocationIndicator;
 FOUNDATION_EXPORT NSString *const kSettingsStopWithTerminate;
+FOUNDATION_EXPORT NSString *const kSettingsPausesLocationUpdatesAutomatically;
+FOUNDATION_EXPORT NSString *const kSettingsActivityType;
 
 FOUNDATION_EXPORT NSString *const kBCMSendLocation;
 FOUNDATION_EXPORT NSString *const kBCMInit;
