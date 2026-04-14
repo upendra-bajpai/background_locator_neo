@@ -1,233 +1,225 @@
 import 'dart:async';
 import 'dart:isolate';
 import 'dart:ui';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart' as geo;
 
+// Background Locator Dependencies
 import 'package:background_locator_neo/background_locator.dart';
-import 'package:background_locator_neo/location_dto.dart';
 import 'package:background_locator_neo/settings/android_settings.dart';
 import 'package:background_locator_neo/settings/ios_settings.dart';
 import 'package:background_locator_neo/settings/locator_settings.dart';
-import 'package:flutter/material.dart';
-import 'package:permission_handler/permission_handler.dart';
+import 'package:background_locator_neo/location_dto.dart';
 
-import 'file_manager.dart';
-import 'location_callback_handler.dart';
-import 'location_service_repository.dart';
+const String _isolateName = "LocatorIsolate";
+final ReceivePort port = ReceivePort();
 
-void main() => runApp(MyApp());
-
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
+void main() {
+  runApp(const MyApp());
 }
 
-class _MyAppState extends State<MyApp> {
-  ReceivePort port = ReceivePort();
+// ----------------------------------------------------------------------
+// ⚡ HEADLESS ISOLATE CALLBACKS ⚡
+// These MUST remain top-level static functions outside of any class.
+// They execute in a completely isolated Dart memory space when the UI is killed!
+// ----------------------------------------------------------------------
 
-  String logStr = '';
-  bool isRunning;
-  LocationDto lastLocation;
+@pragma('vm:entry-point')
+void locationCallback(LocationDto locationDto) async {
+  // If the app UI is actually alive, send it via the Port!
+  final SendPort? send = IsolateNameServer.lookupPortByName(_isolateName);
+  send?.send(locationDto.toJson());
+  
+  // This print will appear in logcat even if the app UI is totally dead.
+  print('🗡️ [ISOLATE LOG] LocationTrigger: ${locationDto.latitude}, ${locationDto.longitude}');
+}
+
+@pragma('vm:entry-point')
+void initCallback(Map<dynamic, dynamic> params) {
+  print('🗡️ [ISOLATE LOG] Plugin initialized in background');
+}
+
+@pragma('vm:entry-point')
+void disposeCallback() {
+  print('🗡️ [ISOLATE LOG] Plugin cleanup');
+}
+
+@pragma('vm:entry-point')
+void notificationCallback() {
+  print('🗡️ [ISOLATE LOG] User clicked the notification');
+}
+
+// ----------------------------------------------------------------------
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      title: 'Headless Location Tracker',
+      debugShowCheckedModeBanner: false,
+      home: HelloWorldScreen(),
+    );
+  }
+}
+
+class HelloWorldScreen extends StatefulWidget {
+  const HelloWorldScreen({super.key});
+
+  @override
+  State<HelloWorldScreen> createState() => _HelloWorldScreenState();
+}
+
+class _HelloWorldScreenState extends State<HelloWorldScreen> {
+  String _locationStatus = 'Status: Stopped / Init';
+  String _currentLocation = 'Lat: -, Lon: -';
+  bool _isTracking = false;
 
   @override
   void initState() {
     super.initState();
-
-    if (IsolateNameServer.lookupPortByName(
-            LocationServiceRepository.isolateName) !=
-        null) {
-      IsolateNameServer.removePortNameMapping(
-          LocationServiceRepository.isolateName);
-    }
-
-    IsolateNameServer.registerPortWithName(
-        port.sendPort, LocationServiceRepository.isolateName);
-
-    port.listen(
-      (dynamic data) async {
-        await updateUI(data);
-      },
-    );
-    initPlatformState();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
-
-  Future<void> updateUI(dynamic data) async {
-    final log = await FileManager.readLogFile();
-
-    LocationDto locationDto = (data != null) ? LocationDto.fromJson(data) : null;
-    await _updateNotificationText(locationDto);
-
-    setState(() {
-      if (data != null) {
-        lastLocation = locationDto;
+    
+    // Bind the isolate receive port so the UI can update when it's alive
+    IsolateNameServer.registerPortWithName(port.sendPort, _isolateName);
+    port.listen((dynamic data) {
+      if (data is Map) {
+        final double lat = data['latitude'] ?? 0.0;
+        final double lon = data['longitude'] ?? 0.0;
+        if (mounted) {
+          setState(() {
+            _currentLocation = 'Lat: ${lat.toStringAsFixed(5)}, Lon: ${lon.toStringAsFixed(5)}';
+          });
+        }
       }
-      logStr = log;
     });
+
+    _initBackgroundLocator();
   }
 
-  Future<void> _updateNotificationText(LocationDto data) async {
-    if (data == null) {
-      return;
+  Future<void> _initBackgroundLocator() async {
+    // Initializes native platform channels for the background service
+    await BackgroundLocator.initialize();
+    
+    // Check if it's already running from a previous launch/reboot
+    bool isRunning = await BackgroundLocator.isServiceRunning();
+    if (mounted) {
+      setState(() {
+        _isTracking = isRunning;
+        _locationStatus = isRunning ? 'Status: Tracking (Background Core)' : 'Status: Stopped';
+      });
+    }
+  }
+
+  Future<bool> _requireAlwaysPermission() async {
+    // We still use geolocator exactly as before solely to orchestrate the permission funnel
+    bool serviceEnabled = await geo.Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      if (mounted) setState(() => _locationStatus = 'Status: Location Services disabled');
+      return false;
     }
 
-    await BackgroundLocator.updateNotificationText(
-        title: "new location received",
-        msg: "${DateTime.now()}",
-        bigMsg: "${data.latitude}, ${data.longitude}");
+    geo.LocationPermission permission = await geo.Geolocator.checkPermission();
+    if (permission == geo.LocationPermission.denied) {
+      permission = await geo.Geolocator.requestPermission();
+      if (permission == geo.LocationPermission.denied) {
+        if (mounted) setState(() => _locationStatus = 'Status: Permission denied');
+        return false;
+      }
+    }
+
+    if (permission == geo.LocationPermission.deniedForever) {
+      await geo.Geolocator.openAppSettings();
+      if (mounted) setState(() => _locationStatus = 'Status: Permission denied forever');
+      return false;
+    }
+
+    if (permission == geo.LocationPermission.whileInUse) {
+      permission = await geo.Geolocator.requestPermission();
+      if (permission != geo.LocationPermission.always) {
+        if (mounted) setState(() => _locationStatus = 'Warning: Only got WhileInUse');
+      }
+    }
+
+    return permission == geo.LocationPermission.always || permission == geo.LocationPermission.whileInUse;
   }
 
-  Future<void> initPlatformState() async {
-    print('Initializing...');
-    await BackgroundLocator.initialize();
-    logStr = await FileManager.readLogFile();
-    print('Initialization done');
-    final _isRunning = await BackgroundLocator.isServiceRunning();
+  Future<void> _startBackgroundTracking() async {
+    bool hasPermission = await _requireAlwaysPermission();
+    if (!hasPermission) return;
+
     setState(() {
-      isRunning = _isRunning;
+      _isTracking = true;
+      _locationStatus = 'Status: Tracking started (Headless Core)';
     });
-    print('Running ${isRunning.toString()}');
+
+    // Fire the heavy BackgroundLocator Registration
+    await BackgroundLocator.registerLocationUpdate(
+      locationCallback,
+      initCallback: initCallback,
+      disposeCallback: disposeCallback,
+      iosSettings: IOSSettings(
+        accuracy: LocationAccuracy.NAVIGATION,
+        distanceFilter: 0,
+        showsBackgroundLocationIndicator: true,
+      ),
+      androidSettings: AndroidSettings(
+        accuracy: LocationAccuracy.NAVIGATION,
+        interval: 10, // Seconds
+        distanceFilter: 0,
+        client: LocationClient.google,
+        androidNotificationSettings: AndroidNotificationSettings(
+          notificationChannelName: 'Location tracking',
+          notificationTitle: 'Tracking Location in Background',
+          notificationMsg: 'Your app is aggressively tracking location.',
+          notificationBigMsg: 'App is surviving termination and doze states.',
+          notificationIcon: '',
+          notificationIconColor: Colors.blue,
+          notificationTapCallback: notificationCallback,
+        ),
+        wakeLockTime: 20,
+      ),
+    );
+  }
+
+  Future<void> _stopTracking() async {
+    await BackgroundLocator.unRegisterLocationUpdate();
+    setState(() {
+      _isTracking = false;
+      _locationStatus = 'Status: Stopped explicitly';
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    final start = SizedBox(
-      width: double.maxFinite,
-      child: ElevatedButton(
-        child: Text('Start'),
-        onPressed: () {
-          _onStart();
-        },
-      ),
-    );
-    final stop = SizedBox(
-      width: double.maxFinite,
-      child: ElevatedButton(
-        child: Text('Stop'),
-        onPressed: () {
-          onStop();
-        },
-      ),
-    );
-    final clear = SizedBox(
-      width: double.maxFinite,
-      child: ElevatedButton(
-        child: Text('Clear Log'),
-        onPressed: () {
-          FileManager.clearLogFile();
-          setState(() {
-            logStr = '';
-          });
-        },
-      ),
-    );
-    String msgStatus = "-";
-    if (isRunning != null) {
-      if (isRunning) {
-        msgStatus = 'Is running';
-      } else {
-        msgStatus = 'Is not running';
-      }
-    }
-    final status = Text("Status: $msgStatus");
-
-    final log = Text(
-      logStr,
-    );
-
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Flutter background Locator'),
-        ),
-        body: Container(
-          width: double.maxFinite,
-          padding: const EdgeInsets.all(22),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[start, stop, clear, status, log],
+    return Scaffold(
+      appBar: AppBar(title: const Text('Isolate Background Tracker')),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              _locationStatus,
+              style: const TextStyle(fontSize: 16, color: Colors.grey),
             ),
-          ),
+            const SizedBox(height: 20),
+            Text(
+              _currentLocation,
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 40),
+            ElevatedButton.icon(
+              onPressed: _isTracking ? _stopTracking : _startBackgroundTracking,
+              icon: Icon(_isTracking ? Icons.stop : Icons.play_arrow),
+              label: Text(_isTracking ? 'Stop Tracking' : 'Start Isolate Tracking'),
+              style: ElevatedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+              ),
+            ),
+          ],
         ),
       ),
     );
-  }
-
-  void onStop() async {
-    await BackgroundLocator.unRegisterLocationUpdate();
-    final _isRunning = await BackgroundLocator.isServiceRunning();
-    setState(() {
-      isRunning = _isRunning;
-    });
-  }
-
-  void _onStart() async {
-    if (await _checkLocationPermission()) {
-      await _startLocator();
-      final _isRunning = await BackgroundLocator.isServiceRunning();
-
-      setState(() {
-        isRunning = _isRunning;
-        lastLocation = null;
-      });
-    } else {
-      // show error
-    }
-  }
-
-  Future<bool> _checkLocationPermission() async {
-    final status = await Permission.locationAlways.status;
-    switch (status) {
-      case PermissionStatus.denied:
-      case PermissionStatus.provisional:
-        final result = await Permission.locationAlways.request();
-        if (result == PermissionStatus.granted) {
-          return true;
-        } else {
-          return false;
-        }
-      case PermissionStatus.restricted:
-      case PermissionStatus.permanentlyDenied:
-        return false;
-      case PermissionStatus.granted:
-        return true;
-      case PermissionStatus.limited:
-        return true;
-      default:
-        return false;
-    }
-  }
-
-  Future<void> _startLocator() async{
-    Map<String, dynamic> data = {'countInit': 1};
-    return await BackgroundLocator.registerLocationUpdate(LocationCallbackHandler.callback,
-        initCallback: LocationCallbackHandler.initCallback,
-        initDataCallback: data,
-        disposeCallback: LocationCallbackHandler.disposeCallback,
-        iosSettings: IOSSettings(
-            accuracy: LocationAccuracy.NAVIGATION,
-            distanceFilter: 0,
-            stopWithTerminate: true
-        ),
-        autoStop: false,
-        androidSettings: AndroidSettings(
-            accuracy: LocationAccuracy.NAVIGATION,
-            interval: 5,
-            distanceFilter: 0,
-            client: LocationClient.google,
-            androidNotificationSettings: AndroidNotificationSettings(
-                notificationChannelName: 'Location tracking',
-                notificationTitle: 'Start Location Tracking',
-                notificationMsg: 'Track location in background',
-                notificationBigMsg:
-                    'Background location is on to keep the app up-tp-date with your location. This is required for main features to work properly when the app is not running.',
-                notificationIconColor: Colors.grey,
-                notificationTapCallback:
-                    LocationCallbackHandler.notificationCallback)));
   }
 }
-

@@ -1,0 +1,203 @@
+﻿Resolving dependencies...
+Downloading packages...
+  characters 1.4.0 (1.4.1 available)
+  matcher 0.12.17 (0.12.19 available)
+  material_color_utilities 0.11.1 (0.13.0 available)
+  meta 1.17.0 (1.18.2 available)
+  test_api 0.7.7 (0.7.11 available)
+  vector_math 2.2.0 (2.3.0 available)
+Got dependencies!
+6 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+Publishing background_locator_neo 1.0.0 to https://pub.dev:
+Γö£ΓöÇΓöÇ CHANGELOG.md (4 KB)
+Γö£ΓöÇΓöÇ LICENSE (1 KB)
+Γö£ΓöÇΓöÇ README.md (3 KB)
+Γö£ΓöÇΓöÇ android
+Γöé   Γö£ΓöÇΓöÇ build.gradle (1 KB)
+Γöé   Γö£ΓöÇΓöÇ gradle
+Γöé   Γöé   ΓööΓöÇΓöÇ wrapper
+Γöé   Γöé       ΓööΓöÇΓöÇ gradle-wrapper.properties (<1 KB)
+Γöé   Γö£ΓöÇΓöÇ gradle.properties (<1 KB)
+Γöé   Γö£ΓöÇΓöÇ settings.gradle (<1 KB)
+Γöé   ΓööΓöÇΓöÇ src
+Γöé       ΓööΓöÇΓöÇ main
+Γöé           Γö£ΓöÇΓöÇ AndroidManifest.xml (<1 KB)
+Γöé           ΓööΓöÇΓöÇ kotlin
+Γöé               ΓööΓöÇΓöÇ upendra
+Γöé                   ΓööΓöÇΓöÇ bajpai
+Γöé                       ΓööΓöÇΓöÇ background_locator_neo
+Γöé                           Γö£ΓöÇΓöÇ BackgroundLocatorPlugin.kt (13 KB)
+Γöé                           Γö£ΓöÇΓöÇ BootBroadcastReceiver.kt (<1 KB)
+Γöé                           Γö£ΓöÇΓöÇ IsolateHolderExtension.kt (4 KB)
+Γöé                           Γö£ΓöÇΓöÇ IsolateHolderService.kt (12 KB)
+Γöé                           Γö£ΓöÇΓöÇ Keys.kt (4 KB)
+Γöé                           Γö£ΓöÇΓöÇ PreferencesManager.kt (8 KB)
+Γöé                           Γö£ΓöÇΓöÇ pluggables
+Γöé                           Γöé   Γö£ΓöÇΓöÇ DisposePluggable.kt (1 KB)
+Γöé                           Γöé   Γö£ΓöÇΓöÇ InitPluggable.kt (1 KB)
+Γöé                           Γöé   ΓööΓöÇΓöÇ Pluggable.kt (<1 KB)
+Γöé                           ΓööΓöÇΓöÇ provider
+Γöé                               Γö£ΓöÇΓöÇ AndroidLocationProviderClient.kt (3 KB)
+Γöé                               Γö£ΓöÇΓöÇ BLLocationProvider.kt (<1 KB)
+Γöé                               Γö£ΓöÇΓöÇ GoogleLocationProviderClient.kt (1 KB)
+Γöé                               Γö£ΓöÇΓöÇ LocationClient.kt (<1 KB)
+Γöé                               Γö£ΓöÇΓöÇ LocationParserUtil.kt (2 KB)
+Γöé                               Γö£ΓöÇΓöÇ LocationRequestOptions.kt (<1 KB)
+Γöé                               ΓööΓöÇΓöÇ LocationUpdateListener.kt (<1 KB)
+Γö£ΓöÇΓöÇ demo.gif (1 MB)
+Γö£ΓöÇΓöÇ example
+Γöé   Γö£ΓöÇΓöÇ README.md (<1 KB)
+Γöé   Γö£ΓöÇΓöÇ android
+Γöé   Γöé   Γö£ΓöÇΓöÇ app
+Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ build.gradle (2 KB)
+Γöé   Γöé   Γöé   ΓööΓöÇΓöÇ src
+Γöé   Γöé   Γöé       Γö£ΓöÇΓöÇ debug
+Γöé   Γöé   Γöé       Γöé   ΓööΓöÇΓöÇ AndroidManifest.xml (<1 KB)
+Γöé   Γöé   Γöé       Γö£ΓöÇΓöÇ main
+Γöé   Γöé   Γöé       Γöé   Γö£ΓöÇΓöÇ AndroidManifest.xml (2 KB)
+Γöé   Γöé   Γöé       Γöé   Γö£ΓöÇΓöÇ kotlin
+Γöé   Γöé   Γöé       Γöé   Γöé   ΓööΓöÇΓöÇ upendra
+Γöé   Γöé   Γöé       Γöé   Γöé       ΓööΓöÇΓöÇ bajpai
+Γöé   Γöé   Γöé       Γöé   Γöé           ΓööΓöÇΓöÇ background_locator_example
+Γöé   Γöé   Γöé       Γöé   Γöé               Γö£ΓöÇΓöÇ Application.kt (<1 KB)
+Γöé   Γöé   Γöé       Γöé   Γöé               ΓööΓöÇΓöÇ MainActivity.kt (<1 KB)
+Γöé   Γöé   Γöé       Γöé   ΓööΓöÇΓöÇ res
+Γöé   Γöé   Γöé       Γöé       Γö£ΓöÇΓöÇ drawable
+Γöé   Γöé   Γöé       Γöé       Γöé   ΓööΓöÇΓöÇ launch_background.xml (<1 KB)
+Γöé   Γöé   Γöé       Γöé       Γö£ΓöÇΓöÇ drawable-v21
+Γöé   Γöé   Γöé       Γöé       Γöé   ΓööΓöÇΓöÇ launch_background.xml (<1 KB)
+Γöé   Γöé   Γöé       Γöé       Γö£ΓöÇΓöÇ mipmap-hdpi
+Γöé   Γöé   Γöé       Γöé       Γöé   Γö£ΓöÇΓöÇ ic_launcher.png (<1 KB)
+Γöé   Γöé   Γöé       Γöé       Γöé   ΓööΓöÇΓöÇ ic_location.png (1 KB)
+Γöé   Γöé   Γöé       Γöé       Γö£ΓöÇΓöÇ mipmap-mdpi
+Γöé   Γöé   Γöé       Γöé       Γöé   Γö£ΓöÇΓöÇ ic_launcher.png (<1 KB)
+Γöé   Γöé   Γöé       Γöé       Γöé   ΓööΓöÇΓöÇ ic_location.png (<1 KB)
+Γöé   Γöé   Γöé       Γöé       Γö£ΓöÇΓöÇ mipmap-xhdpi
+Γöé   Γöé   Γöé       Γöé       Γöé   Γö£ΓöÇΓöÇ ic_launcher.png (<1 KB)
+Γöé   Γöé   Γöé       Γöé       Γöé   ΓööΓöÇΓöÇ ic_location.png (1 KB)
+Γöé   Γöé   Γöé       Γöé       Γö£ΓöÇΓöÇ mipmap-xxhdpi
+Γöé   Γöé   Γöé       Γöé       Γöé   Γö£ΓöÇΓöÇ ic_launcher.png (1 KB)
+Γöé   Γöé   Γöé       Γöé       Γöé   ΓööΓöÇΓöÇ ic_location.png (2 KB)
+Γöé   Γöé   Γöé       Γöé       Γö£ΓöÇΓöÇ mipmap-xxxhdpi
+Γöé   Γöé   Γöé       Γöé       Γöé   Γö£ΓöÇΓöÇ ic_launcher.png (1 KB)
+Γöé   Γöé   Γöé       Γöé       Γöé   ΓööΓöÇΓöÇ ic_location.png (3 KB)
+Γöé   Γöé   Γöé       Γöé       Γö£ΓöÇΓöÇ values
+Γöé   Γöé   Γöé       Γöé       Γöé   ΓööΓöÇΓöÇ styles.xml (<1 KB)
+Γöé   Γöé   Γöé       Γöé       ΓööΓöÇΓöÇ values-night
+Γöé   Γöé   Γöé       Γöé           ΓööΓöÇΓöÇ styles.xml (<1 KB)
+Γöé   Γöé   Γöé       ΓööΓöÇΓöÇ profile
+Γöé   Γöé   Γöé           ΓööΓöÇΓöÇ AndroidManifest.xml (<1 KB)
+Γöé   Γöé   Γö£ΓöÇΓöÇ build.gradle (<1 KB)
+Γöé   Γöé   Γö£ΓöÇΓöÇ gradle
+Γöé   Γöé   Γöé   ΓööΓöÇΓöÇ wrapper
+Γöé   Γöé   Γöé       ΓööΓöÇΓöÇ gradle-wrapper.properties (<1 KB)
+Γöé   Γöé   Γö£ΓöÇΓöÇ gradle.properties (<1 KB)
+Γöé   Γöé   ΓööΓöÇΓöÇ settings.gradle (<1 KB)
+Γöé   Γö£ΓöÇΓöÇ ios
+Γöé   Γöé   Γö£ΓöÇΓöÇ Flutter
+Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ AppFrameworkInfo.plist (<1 KB)
+Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ Debug.xcconfig (<1 KB)
+Γöé   Γöé   Γöé   ΓööΓöÇΓöÇ Release.xcconfig (<1 KB)
+Γöé   Γöé   Γö£ΓöÇΓöÇ Podfile (1 KB)
+Γöé   Γöé   Γö£ΓöÇΓöÇ Runner
+Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ AppDelegate.swift (1 KB)
+Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ Assets.xcassets
+Γöé   Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ AppIcon.appiconset
+Γöé   Γöé   Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ Contents.json (2 KB)
+Γöé   Γöé   Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ Icon-App-1024x1024@1x.png (10 KB)
+Γöé   Γöé   Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ Icon-App-20x20@1x.png (<1 KB)
+Γöé   Γöé   Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ Icon-App-20x20@2x.png (1 KB)
+Γöé   Γöé   Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ Icon-App-20x20@3x.png (1 KB)
+Γöé   Γöé   Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ Icon-App-29x29@1x.png (1 KB)
+Γöé   Γöé   Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ Icon-App-29x29@2x.png (1 KB)
+Γöé   Γöé   Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ Icon-App-29x29@3x.png (1 KB)
+Γöé   Γöé   Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ Icon-App-40x40@1x.png (1 KB)
+Γöé   Γöé   Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ Icon-App-40x40@2x.png (1 KB)
+Γöé   Γöé   Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ Icon-App-40x40@3x.png (2 KB)
+Γöé   Γöé   Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ Icon-App-60x60@2x.png (2 KB)
+Γöé   Γöé   Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ Icon-App-60x60@3x.png (3 KB)
+Γöé   Γöé   Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ Icon-App-76x76@1x.png (1 KB)
+Γöé   Γöé   Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ Icon-App-76x76@2x.png (3 KB)
+Γöé   Γöé   Γöé   Γöé   Γöé   ΓööΓöÇΓöÇ Icon-App-83.5x83.5@2x.png (3 KB)
+Γöé   Γöé   Γöé   Γöé   ΓööΓöÇΓöÇ LaunchImage.imageset
+Γöé   Γöé   Γöé   Γöé       Γö£ΓöÇΓöÇ Contents.json (<1 KB)
+Γöé   Γöé   Γöé   Γöé       Γö£ΓöÇΓöÇ LaunchImage.png (<1 KB)
+Γöé   Γöé   Γöé   Γöé       Γö£ΓöÇΓöÇ LaunchImage@2x.png (<1 KB)
+Γöé   Γöé   Γöé   Γöé       Γö£ΓöÇΓöÇ LaunchImage@3x.png (<1 KB)
+Γöé   Γöé   Γöé   Γöé       ΓööΓöÇΓöÇ README.md (<1 KB)
+Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ Base.lproj
+Γöé   Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ LaunchScreen.storyboard (2 KB)
+Γöé   Γöé   Γöé   Γöé   ΓööΓöÇΓöÇ Main.storyboard (1 KB)
+Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ Info.plist (2 KB)
+Γöé   Γöé   Γöé   ΓööΓöÇΓöÇ Runner-Bridging-Header.h (<1 KB)
+Γöé   Γöé   Γö£ΓöÇΓöÇ Runner.xcodeproj
+Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ project.pbxproj (23 KB)
+Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ project.xcworkspace
+Γöé   Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ contents.xcworkspacedata (<1 KB)
+Γöé   Γöé   Γöé   Γöé   ΓööΓöÇΓöÇ xcshareddata
+Γöé   Γöé   Γöé   Γöé       Γö£ΓöÇΓöÇ IDEWorkspaceChecks.plist (<1 KB)
+Γöé   Γöé   Γöé   Γöé       ΓööΓöÇΓöÇ WorkspaceSettings.xcsettings (<1 KB)
+Γöé   Γöé   Γöé   ΓööΓöÇΓöÇ xcshareddata
+Γöé   Γöé   Γöé       ΓööΓöÇΓöÇ xcschemes
+Γöé   Γöé   Γöé           ΓööΓöÇΓöÇ Runner.xcscheme (3 KB)
+Γöé   Γöé   ΓööΓöÇΓöÇ Runner.xcworkspace
+Γöé   Γöé       Γö£ΓöÇΓöÇ contents.xcworkspacedata (<1 KB)
+Γöé   Γöé       ΓööΓöÇΓöÇ xcshareddata
+Γöé   Γöé           ΓööΓöÇΓöÇ IDEWorkspaceChecks.plist (<1 KB)
+Γöé   Γö£ΓöÇΓöÇ lib
+Γöé   Γöé   Γö£ΓöÇΓöÇ file_manager.dart (<1 KB)
+Γöé   Γöé   Γö£ΓöÇΓöÇ location_callback_handler.dart (1 KB)
+Γöé   Γöé   Γö£ΓöÇΓöÇ location_service_repository.dart (2 KB)
+Γöé   Γöé   ΓööΓöÇΓöÇ main.dart (6 KB)
+Γöé   Γö£ΓöÇΓöÇ pubspec.yaml (2 KB)
+Γöé   ΓööΓöÇΓöÇ test
+Γöé       ΓööΓöÇΓöÇ widget_test.dart (<1 KB)
+Γö£ΓöÇΓöÇ ios
+Γöé   Γö£ΓöÇΓöÇ Assets
+Γöé   Γö£ΓöÇΓöÇ Classes
+Γöé   Γöé   Γö£ΓöÇΓöÇ BackgroundLocatorPlugin.h (<1 KB)
+Γöé   Γöé   Γö£ΓöÇΓöÇ BackgroundLocatorPlugin.m (9 KB)
+Γöé   Γöé   Γö£ΓöÇΓöÇ Globals.h (2 KB)
+Γöé   Γöé   Γö£ΓöÇΓöÇ Globals.m (2 KB)
+Γöé   Γöé   Γö£ΓöÇΓöÇ Helpers
+Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ MethodCallHelper.h (<1 KB)
+Γöé   Γöé   Γöé   ΓööΓöÇΓöÇ MethodCallHelper.m (2 KB)
+Γöé   Γöé   Γö£ΓöÇΓöÇ Preferences
+Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ PreferencesManager.h (<1 KB)
+Γöé   Γöé   Γöé   ΓööΓöÇΓöÇ PreferencesManager.m (2 KB)
+Γöé   Γöé   Γö£ΓöÇΓöÇ Utils
+Γöé   Γöé   Γöé   Γö£ΓöÇΓöÇ Util.h (<1 KB)
+Γöé   Γöé   Γöé   ΓööΓöÇΓöÇ Util.m (1 KB)
+Γöé   Γöé   ΓööΓöÇΓöÇ pluggables
+Γöé   Γöé       Γö£ΓöÇΓöÇ DisposePluggable.h (<1 KB)
+Γöé   Γöé       Γö£ΓöÇΓöÇ DisposePluggable.m (<1 KB)
+Γöé   Γöé       Γö£ΓöÇΓöÇ InitPluggable.h (<1 KB)
+Γöé   Γöé       Γö£ΓöÇΓöÇ InitPluggable.m (1 KB)
+Γöé   Γöé       ΓööΓöÇΓöÇ Pluggable.h (<1 KB)
+Γöé   ΓööΓöÇΓöÇ background_locator_neo.podspec (<1 KB)
+Γö£ΓöÇΓöÇ lib
+Γöé   Γö£ΓöÇΓöÇ auto_stop_handler.dart (<1 KB)
+Γöé   Γö£ΓöÇΓöÇ background_locator.dart (2 KB)
+Γöé   Γö£ΓöÇΓöÇ callback_dispatcher.dart (1 KB)
+Γöé   Γö£ΓöÇΓöÇ keys.dart (3 KB)
+Γöé   Γö£ΓöÇΓöÇ location_dto.dart (1 KB)
+Γöé   Γö£ΓöÇΓöÇ settings
+Γöé   Γöé   Γö£ΓöÇΓöÇ android_settings.dart (4 KB)
+Γöé   Γöé   Γö£ΓöÇΓöÇ ios_settings.dart (1 KB)
+Γöé   Γöé   ΓööΓöÇΓöÇ locator_settings.dart (<1 KB)
+Γöé   ΓööΓöÇΓöÇ utils
+Γöé       ΓööΓöÇΓöÇ settings_util.dart (2 KB)
+Γö£ΓöÇΓöÇ pub_dry_run_final.txt (<1 KB)
+Γö£ΓöÇΓöÇ pubspec.yaml (<1 KB)
+Γö£ΓöÇΓöÇ res
+Γöé   ΓööΓöÇΓöÇ values
+Γöé       ΓööΓöÇΓöÇ strings_en.arb (<1 KB)
+ΓööΓöÇΓöÇ test
+    ΓööΓöÇΓöÇ background_locator_test.dart (<1 KB)
+
+Total compressed archive size: 1 MB.
+Validating package...
+The server may enforce additional checks.
+
+Package has 0 warnings.
